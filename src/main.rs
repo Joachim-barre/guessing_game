@@ -20,9 +20,9 @@ fn print_diff(diff : u32){
 }
 
 fn main() {
-    println!("Guess the number!");
+    println!("Guess the number!\nthe number if between 1 and 100");
 
-    let secret_number: u32 = rand::thread_rng().gen_range(1..=100);
+    let secret_number: u32 = rand::thread_rng().gen_range(1..=99);
 
     if DEBUG {
         println!("debug : secret number {secret_number}");
