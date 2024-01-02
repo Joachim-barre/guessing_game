@@ -40,10 +40,15 @@ fn main() {
         let guess : u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => {
-                println!("Please type a number!");
+                println!("Please type a number between 0 and 100!");
                 continue;
             }
         };
+
+        if guess > 99 {
+            println!("Please type a number between 0 and 100!");
+            continue;
+        }
 
         println!("You guessed: {guess}");
 
