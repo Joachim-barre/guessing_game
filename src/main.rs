@@ -1,5 +1,4 @@
 use std::io;
-use std::cmp::Ordering;
 use rand::Rng;
 
 const DEBUG : bool = false;
@@ -7,7 +6,7 @@ const DEBUG : bool = false;
 fn main() {
     println!("Guess the number!");
 
-    let secret_number = rand::thread_rng().gen_range(1..=100);
+    let secret_number: u32 = rand::thread_rng().gen_range(1..=100);
 
     if DEBUG {
         println!("debug : secret number {secret_number}");
@@ -32,13 +31,21 @@ fn main() {
 
         println!("You guessed: {guess}");
 
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => {
-                println!("You win!");
-                break;
-            },
+        let diff = secret_number.abs_diff(guess);
+       
+        if diff == 0 {
+            println!("You won!");
+            break;
+        }else if diff < 5 {
+            println!("You are really close!");
+        }else if diff < 10 {
+            println!("You are close!");
+        }else if diff < 20 {
+            println!("You are close, but a little far!");
+        }else if diff < 40 {
+            println!("You are a little bit too far!");
+        }else {
+            println!("You are really far!")
         }
     }
 }
