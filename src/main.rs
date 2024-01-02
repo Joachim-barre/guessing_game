@@ -28,6 +28,8 @@ fn main() {
         println!("debug : secret number {secret_number}");
     }
 
+    let mut count : u32 = 0;
+
     loop {
         println!("Your Number : ");
 
@@ -54,8 +56,12 @@ fn main() {
 
         print_diff(guess.abs_diff(secret_number));
     
+        count += 1;
+
         if guess == secret_number {
             break;
         }
     }
+
+    println!("you found the number in {count} tries");
 }
